@@ -42,16 +42,24 @@ class Cart {
       'id': id,
       'userModel': userModel?.toMap(),
       'date': date,
-      'items': items!.map((x) => x?.toMap()).toList(),
+      'items': items!.map((x) => x.toMap()).toList(),
     };
   }
 
   factory Cart.fromMap(Map<String, dynamic> map) {
     return Cart(
       id: map['id'] != null ? map['id'] as String : null,
-      userModel: map['userModel'] != null ? UserModel.fromMap(map['userModel'] as Map<String,dynamic>) : null,
+      userModel: map['userModel'] != null
+          ? UserModel.fromMap(map['userModel'] as Map<String, dynamic>)
+          : null,
       date: map['date'] != null ? map['date'] as String : null,
-      items: map['items'] != null ? List<CartItem>.from((map['items'] as List<int>).map<CartItem?>((x) => CartItem.fromMap(x as Map<String,dynamic>),),) : null,
+      items: map['items'] != null
+          ? List<CartItem>.from(
+              (map['items'] as List<int>).map<CartItem?>(
+                (x) => CartItem.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
     );
   }
 
@@ -68,19 +76,15 @@ class Cart {
   @override
   bool operator ==(covariant Cart other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.userModel == userModel &&
-      other.date == date &&
-      listEquals(other.items, items);
+
+    return other.id == id &&
+        other.userModel == userModel &&
+        other.date == date &&
+        listEquals(other.items, items);
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-      userModel.hashCode ^
-      date.hashCode ^
-      items.hashCode;
+    return id.hashCode ^ userModel.hashCode ^ date.hashCode ^ items.hashCode;
   }
 }
