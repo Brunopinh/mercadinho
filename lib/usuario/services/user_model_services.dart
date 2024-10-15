@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:mercadinho/usuario/user_model.dart';
+import 'package:mercadinho/usuario/models/user_model.dart';
 
 class UserModelServices {
   // obtendo a instancia do firabase de autenticação

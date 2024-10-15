@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:mercadinho/cart/cart_item.dart';
-import 'package:mercadinho/usuario/user_model.dart';
+import 'package:mercadinho/cart/models/cart_item.dart';
+import 'package:mercadinho/usuario/models/user_model.dart';
 
 // (?) permite que o objeto pode ser nulo
 // (!) é nulo.
