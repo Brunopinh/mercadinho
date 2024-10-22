@@ -1,12 +1,4 @@
-Future<void> initializeApp() async {
-  FirebaseApp app = await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  FirebaseFirestore.instance.settings = const Settings(
-    persistenceEnabled: true,
-  );
-  log('Initialized Default APP $app');
-}import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -60,8 +52,13 @@ class ProductServices {
     //fazendo o upload da image
     String url = await (await task.whenComplete(() {
       debugPrint('Upload realizado com sucesso');
-    })).ref.getDownloadURL();
+    }))
+        .ref
+        .getDownloadURL();
     product!.image = url;
-    await _firestore.collection('products').doc(product!.id).set(product!.toMap());
+    await _firestore
+        .collection('products')
+        .doc(product!.id)
+        .set(product!.toMap());
   }
 }
